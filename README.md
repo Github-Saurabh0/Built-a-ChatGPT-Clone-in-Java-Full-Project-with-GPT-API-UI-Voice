@@ -125,3 +125,21 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [OpenAI API Documentation](https://platform.openai.com/docs/api-reference)
 - [OkHttp](https://square.github.io/okhttp/) for HTTP requests
 - [Jackson](https://github.com/FasterXML/jackson) for JSON processing
+
+## Author
+
+**Saurabh Kushwaha**  
+🔗 [Portfolio](https://www.saurabhh.in)  
+📧 Saurabh@wearl.co.in  
+🔗 [LinkedIn](https://www.linkedin.com/in/saurabh884095/)  
+🔗 [Instagram Dev Page](https://www.instagram.com/dev.wearl)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Star this repo if you found it helpful!
