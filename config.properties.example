@@ -1,0 +1,9 @@
+# OpenAI API Configuration
+# Replace YOUR_API_KEY_HERE with your actual OpenAI API key
+# Then rename this file to config.properties
+
+openai.api.key=YOUR_API_KEY_HERE
+
+# You can also set the API key as an environment variable:
+# Windows: set OPENAI_API_KEY=your_api_key_here
+# Linux/macOS: export OPENAI_API_KEY=your_api_key_here
