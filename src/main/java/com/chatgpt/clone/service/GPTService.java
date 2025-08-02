@@ -118,6 +118,12 @@ public class GPTService {
      * @throws OpenAIException If an error occurs during the API call
      */
     private String sendChatCompletionRequest(List<Message> messages, String model) {
+        // Check if we're using a placeholder API key
+        if (config.getApiKey().equals("sk-your-api-key-here")) {
+            logger.info("Using placeholder API key - returning mock response");
+            return generateMockResponse(messages);
+        }
+        
         ChatCompletionRequest request = ChatCompletionRequest.builder()
                 .model(model)
                 .messages(messages)
@@ -186,6 +192,42 @@ public class GPTService {
         } catch (IOException e) {
             logger.error("Error communicating with OpenAI API", e);
             throw new OpenAIException("Error communicating with OpenAI API", e);
+        }
+    }
+    
+    /**
+     * Generates a mock response for testing when using a placeholder API key.
+     * 
+     * @param messages The list of messages in the conversation
+     * @return A mock response string
+     */
+    private String generateMockResponse(List<Message> messages) {
+        // Get the last user message
+        String lastUserMessage = "";
+        for (int i = messages.size() - 1; i >= 0; i--) {
+            Message message = messages.get(i);
+            if ("user".equals(message.getRole())) {
+                lastUserMessage = message.getContent();
+                break;
+            }
+        }
+        
+        // Generate a simple response based on the user's message
+        if (lastUserMessage.toLowerCase().contains("hello") || 
+            lastUserMessage.toLowerCase().contains("hi")) {
+            return "Hello! I'm a mock AI assistant. Since you're using a placeholder API key, I'm providing simulated responses for testing purposes.";
+        } else if (lastUserMessage.toLowerCase().contains("how are you")) {
+            return "I'm just a simulated response for testing purposes, but thanks for asking!";
+        } else if (lastUserMessage.toLowerCase().contains("weather")) {
+            return "I can't check the actual weather since this is a simulated response. In a real implementation, I would connect to the OpenAI API to provide accurate information.";
+        } else if (lastUserMessage.toLowerCase().contains("name")) {
+            return "I'm a simulated ChatGPT response for testing purposes. In a real implementation, I would be powered by OpenAI's GPT models.";
+        } else if (lastUserMessage.toLowerCase().contains("??")) {
+            return "I notice you've used multiple question marks. This is a simulated response since you're using a placeholder API key. For real responses, please configure a valid OpenAI API key.";
+        } else if (lastUserMessage.endsWith("?")) {
+            return "That's an interesting question! This is a simulated response for testing purposes. With a valid API key, you would receive an actual response from OpenAI's GPT models.";
+        } else {
+            return "This is a simulated response since you're using a placeholder API key. For real AI-powered responses, please configure a valid OpenAI API key in your config.properties file or as an environment variable.";
         }
     }
 }

@@ -60,6 +60,11 @@ public class OpenAIConfig {
                 props.load(Files.newBufferedReader(configPath));
                 apiKey = props.getProperty(PROP_API_KEY);
                 if (apiKey != null && !apiKey.isEmpty()) {
+                    // For testing purposes, accept placeholder keys
+                    if (apiKey.equals("sk-your-api-key-here")) {
+                        System.out.println("WARNING: Using placeholder API key for testing purposes");
+                        return apiKey;
+                    }
                     return apiKey;
                 }
             }

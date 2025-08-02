@@ -1,6 +1,6 @@
-# ChatGPT Clone in Java with OpenAI API
+# ChatGPT Clone in Java with OpenAI API, UI, and Voice
 
-This project demonstrates how to build a ChatGPT-like AI assistant using Java 17, OpenAI API, and a clean, modular approach. It provides a simple way to interact with OpenAI's GPT models through a Java application.
+This project demonstrates how to build a ChatGPT-like AI assistant using Java 17, OpenAI API, and a clean, modular approach. It provides a simple way to interact with OpenAI's GPT models through a Java application with both a console interface and a graphical user interface (GUI) with text-to-speech capabilities.
 
 ## Features
 
@@ -9,6 +9,10 @@ This project demonstrates how to build a ChatGPT-like AI assistant using Java 17
 - Secure API key management (environment variables or properties file)
 - Clean, modular code structure
 - Simple console-based example application
+- Graphical user interface (GUI) using Java Swing
+- Text-to-speech functionality using FreeTTS
+- Model selection (GPT-3.5-turbo, GPT-4)
+- System message customization
 
 ## Project Structure
 
@@ -22,9 +26,19 @@ This project demonstrates how to build a ChatGPT-like AI assistant using Java 17
 │   │   └── ChatCompletionResponse.java # Response model
 │   ├── service/
 │   │   └── GPTService.java         # Main service for API communication
-│   └── example/
-│       └── GPTExample.java         # Example usage
+│   ├── ui/
+│   │   ├── ChatGPTUI.java          # Graphical user interface
+│   │   ├── VoiceManager.java       # Text-to-speech functionality
+│   │   └── ChatGPTApp.java         # Main application launcher
+│   ├── example/
+│   │   └── GPTExample.java         # Console example usage
+│   ├── util/
+│   │   ├── Logger.java             # Logging utility
+│   │   └── OpenAIUtil.java         # OpenAI utilities
+│   └── exception/
+│       └── OpenAIException.java    # Custom exception handling
 ├── config.properties.example       # Example configuration file
+├── run-ui.bat                      # Batch file to run the UI
 └── pom.xml                         # Maven dependencies
 ```
 
@@ -87,13 +101,36 @@ response = gptService.sendConversation(conversation);
 System.out.println(response);
 ```
 
-### Running the Example
+### Running the Examples
 
-The project includes an example application that demonstrates both simple questions and interactive conversations:
+#### Console Example
+
+The project includes a console example application that demonstrates both simple questions and interactive conversations:
 
 ```
 mvn exec:java -Dexec.mainClass="com.chatgpt.clone.example.GPTExample"
 ```
+
+#### Graphical User Interface
+
+To run the graphical user interface with text-to-speech capabilities:
+
+```
+mvn exec:java -Dexec.mainClass="com.chatgpt.clone.ui.ChatGPTApp"
+```
+
+Or simply run the provided batch file:
+
+```
+run-ui.bat
+```
+
+The UI provides the following features:
+- Chat with GPT models (GPT-3.5-turbo or GPT-4)
+- Customize system messages
+- Enable/disable text-to-speech
+- Clear conversation history
+- Visual display of conversation
 
 ## Customization
 
