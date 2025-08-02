@@ -49,7 +49,7 @@ This project demonstrates how to build a ChatGPT-like AI assistant using Java 17
 - OpenAI API key
 
 ## Model Screenshot
-![Model Main Screen]("D:\Built-a-ChatGPT-Clone-in-Java-Full-Project-with-GPT-API-UI-Voice\src\main\resources\Screenshot-Model\MainScreen.png")
+![Model Main Screen](src\main\resources\Screenshot-Model\MainScreen.png)
 
 
 
