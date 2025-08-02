@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Clone in Java - Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .toc {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .toc li {
+            margin-bottom: 5px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background-color: #fffde7;
+            padding: 10px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>ChatGPT Clone in Java - Documentation</h1>
+    
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#introduction">1. Introduction</a></li>
+            <li><a href="#project-overview">2. Project Overview</a></li>
+            <li><a href="#setup-and-installation">3. Setup and Installation</a></li>
+            <li><a href="#configuring-the-openai-api-key">4. Configuring the OpenAI API Key</a></li>
+            <li><a href="#running-the-application">5. Running the Application</a></li>
+            <li><a href="#testing-the-application">6. Testing the Application</a></li>
+            <li><a href="#features-and-usage">7. Features and Usage</a></li>
+            <li><a href="#troubleshooting">8. Troubleshooting</a></li>
+        </ul>
+    </div>
+    
+    <h2 id="introduction">1. Introduction</h2>
+    <p>
+        This documentation provides detailed instructions on how to set up, configure, and test the ChatGPT Clone in Java project. 
+        The project demonstrates how to build a ChatGPT-like AI assistant using Java 17, OpenAI API, and a clean, modular approach. 
+        It provides a simple way to interact with OpenAI's GPT models through a Java application with both a console interface 
+        and a graphical user interface (GUI) with text-to-speech capabilities.
+    </p>
+    
+    <h2 id="project-overview">2. Project Overview</h2>
+    <p>The ChatGPT Clone in Java project includes the following key components:</p>
+    <ul>
+        <li><strong>OpenAI API Integration</strong>: Connect to OpenAI's GPT models (GPT-3.5-turbo, GPT-4)</li>
+        <li><strong>Graphical User Interface</strong>: A user-friendly interface built with Java Swing</li>
+        <li><strong>Text-to-Speech</strong>: Voice output using FreeTTS</li>
+        <li><strong>Conversation Management</strong>: Maintain conversation context for more natural interactions</li>
+        <li><strong>Mock Response System</strong>: Test the application without an actual OpenAI API key</li>
+    </ul>
+    
+    <h2 id="setup-and-installation">3. Setup and Installation</h2>
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>Java 17 or higher</li>
+        <li>Maven</li>
+        <li>OpenAI API key (optional for testing)</li>
+    </ul>
+    
+    <h3>Installation Steps</h3>
+    <ol>
+        <li>Clone or download the repository to your local machine</li>
+        <li>Navigate to the project directory</li>
+        <li>Build the project using Maven:
+            <pre><code>mvn clean install</code></pre>
+        </li>
+    </ol>
+    
+    <h2 id="configuring-the-openai-api-key">4. Configuring the OpenAI API Key</h2>
+    <p>
+        The application requires an OpenAI API key to connect to the GPT models. 
+        You have two options for configuring the API key:
+    </p>
+    
+    <h3>Option 1: Using the config.properties File</h3>
+    <ol>
+        <li>Open the <code>config.properties</code> file located in the root directory of the project</li>
+        <li>Replace the placeholder value with your actual OpenAI API key:
+            <pre><code># OpenAI API Configuration
+# Replace with your actual API key
+openai.api.key=your-actual-api-key-here</code></pre>
+        </li>
+        <li>Save the file</li>
+    </ol>
+    
+    <h3>Option 2: Using Environment Variables</h3>
+    <p>Alternatively, you can set the API key as an environment variable:</p>
+    <ul>
+        <li><strong>Windows</strong>:
+            <pre><code>set OPENAI_API_KEY=your-actual-api-key-here</code></pre>
+        </li>
+        <li><strong>Linux/macOS</strong>:
+            <pre><code>export OPENAI_API_KEY=your-actual-api-key-here</code></pre>
+        </li>
+    </ul>
+    
+    <h3>Testing Without an API Key</h3>
+    <p>
+        The application includes a mock response system that allows you to test the functionality without an actual OpenAI API key. 
+        If you leave the placeholder value (<code>sk-your-api-key-here</code>) in the <code>config.properties</code> file, 
+        the application will use simulated responses for testing purposes.
+    </p>
+    
+    <h2 id="running-the-application">5. Running the Application</h2>
+    
+    <h3>Using the Batch File (Windows)</h3>
+    <p>The easiest way to run the application is to use the provided batch file:</p>
+    <ol>
+        <li>Double-click on <code>run-ui.bat</code> in the project directory</li>
+        <li>The application will compile and launch automatically</li>
+    </ol>
+    
+    <h3>Using Maven Commands</h3>
+    <p>Alternatively, you can run the application using Maven commands:</p>
+    <pre><code>mvn exec:java -Dexec.mainClass="com.chatgpt.clone.ui.ChatGPTApp"</code></pre>
+    
+    <h2 id="testing-the-application">6. Testing the Application</h2>
+    
+    <h3>Testing with the Placeholder API Key</h3>
+    <p>
+        If you're using the placeholder API key (<code>sk-your-api-key-here</code>), the application will display a warning message 
+        and use simulated responses. This is useful for testing the UI and basic functionality without consuming your OpenAI API quota.
+    </p>
+    <p>The mock response system provides different responses based on the content of your messages:</p>
+    <ul>
+        <li>Messages containing "hello" or "hi" will receive a greeting</li>
+        <li>Messages containing "how are you" will receive a status response</li>
+        <li>Messages containing "weather" will receive a weather-related response</li>
+        <li>Messages containing "name" will receive an identity response</li>
+        <li>Messages with multiple question marks will receive a special response</li>
+        <li>Messages ending with a question mark will receive a generic question response</li>
+        <li>All other messages will receive a default response</li>
+    </ul>
+    
+    <h3>Testing with a Valid API Key</h3>
+    <p>To test the application with actual OpenAI responses:</p>
+    <ol>
+        <li>Configure your OpenAI API key as described in the <a href="#configuring-the-openai-api-key">Configuring the OpenAI API Key</a> section</li>
+        <li>Run the application</li>
+        <li>The application will connect to the OpenAI API and provide real AI-generated responses</li>
+    </ol>
+    
+    <h3>Testing the Voice Feature</h3>
+    <p>The application includes text-to-speech functionality using FreeTTS:</p>
+    <ol>
+        <li>Launch the application</li>
+        <li>Ensure the "Enable Voice" checkbox is selected</li>
+        <li>Send a message and the response will be spoken aloud</li>
+    </ol>
+    <div class="note">
+        <p><strong>Note:</strong> If the voice feature fails to initialize (e.g., due to missing dependencies or system compatibility issues), 
+        it will be automatically disabled, but the application will continue to function without voice output.</p>
+    </div>
+    
+    <h2 id="features-and-usage">7. Features and Usage</h2>
+    
+    <h3>User Interface</h3>
+    <p>The graphical user interface includes the following components:</p>
+    <ul>
+        <li><strong>Chat Area</strong>: Displays the conversation history</li>
+        <li><strong>Input Field</strong>: Enter your messages here</li>
+        <li><strong>Send Button</strong>: Send your message to the AI</li>
+        <li><strong>Clear Chat Button</strong>: Clear the conversation history</li>
+        <li><strong>Model Selector</strong>: Choose between GPT-3.5-turbo and GPT-4 models</li>
+        <li><strong>System Message</strong>: Customize the AI's behavior with a system message</li>
+        <li><strong>Enable Voice</strong>: Toggle text-to-speech functionality</li>
+    </ul>
+    
+    <h3>Conversation Management</h3>
+    <p>
+        The application maintains the conversation context, allowing for more natural and contextual interactions. 
+        For example, you can ask follow-up questions without repeating the entire context.
+    </p>
+    
+    <h3>Model Selection</h3>
+    <p>You can choose between different GPT models:</p>
+    <ul>
+        <li><strong>GPT-3.5-turbo</strong>: Faster and more cost-effective</li>
+        <li><strong>GPT-4</strong>: More capable but potentially slower and more expensive</li>
+    </ul>
+    
+    <h2 id="troubleshooting">8. Troubleshooting</h2>
+    
+    <h3>API Key Issues</h3>
+    <ul>
+        <li>
+            <strong>Error Message</strong>: "API key not found"
+            <ul>
+                <li><strong>Solution</strong>: Ensure your API key is correctly set in either the <code>config.properties</code> file or as an environment variable</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Error Message</strong>: "Invalid API key"
+            <ul>
+                <li><strong>Solution</strong>: Verify that your API key is correct and has not expired</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>Voice Feature Issues</h3>
+    <ul>
+        <li>
+            <strong>Issue</strong>: Voice output not working
+            <ul>
+                <li><strong>Solution</strong>: Check that the "Enable Voice" checkbox is selected. If the issue persists, the voice feature may not be compatible with your system. The application will continue to function without voice output.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>Connection Issues</h3>
+    <ul>
+        <li>
+            <strong>Error Message</strong>: "Error communicating with OpenAI API"
+            <ul>
+                <li><strong>Solution</strong>: Check your internet connection and verify that the OpenAI API is accessible from your network</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>Other Issues</h3>
+    <p>
+        If you encounter any other issues, check the console output for error messages that may provide more information about the problem.
+    </p>
+</body>
+</html>
